@@ -18,7 +18,7 @@ const RESTART_TIME: f64 = 1.0;
 pub struct Game {
     snake: Snake,
 
-    food_exisits: bool,
+    food_exists: bool,
     food_x: i32,
     food_y: i32,
 
@@ -27,4 +27,19 @@ pub struct Game {
 
     game_over: bool,
     waiting_time: f64,
+}
+
+impl Game {
+    pub fn new(width: i32, height: i32) -> Game {
+        Game {
+            snake: Snake::new(2,2),
+            waiting_time: 0.0,
+            food_exists: true,
+            food_x: 6,
+            food_y: 4,
+            width,
+            height,
+            game_over: false
+        }
+    }
 }
