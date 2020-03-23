@@ -128,4 +128,21 @@ impl Snake {
         let blk = self.tail.clone().unwrap();
         self.body.push_back(blk);
     }
+
+    pub fn overlap_tail(&self, x: i32, y: i32) -> bool {
+        let mut ch = 0;
+        for block in &self.body {
+            if x == block.x && y == block.y {
+                return true;
+            }
+
+            // this part of the function is the brief moment the snake head and tail occupy the same block
+            // this stops the game reaching a failure state as the head will be in a valid block once the tail moves
+            ch += 1;
+            if ch == self.body.len() - 1 {
+                break;
+            }
+        }
+        return false;
+    }
 }
